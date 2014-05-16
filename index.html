@@ -15,9 +15,276 @@
         <meta name="description" content="{MetaDescription}" />
     {/block:Description}
 
-    <link rel="stylesheet" href="css/reset.css">
+    <style type="text/css">
+    html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}table{border-collapse:collapse;border-spacing:0}
 
-    <link rel="stylesheet" href="css/style.css" media="screen" type="text/css" />
+    </style>
+    
+    <style type="text/css">
+    .main_h {
+  position: fixed;
+  top: 0px;
+  max-height: 70px;
+  z-index: 999;
+  width: 100%;
+  padding-top: 17px;
+  background: none;
+  overflow: hidden;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  opacity: 0;
+  top: -100px;
+  padding-bottom: 6px;
+  font-family: "Montserrat", sans-serif;
+}
+@media only screen and (max-width: 766px) {
+  .main_h {
+    padding-top: 25px;
+  }
+}
+
+.open-nav {
+  max-height: 400px !important;
+}
+.open-nav .mobile-toggle {
+  transform: rotate(-90deg);
+  -webkit-transform: rotate(-90deg);
+}
+
+.sticky {
+  background-color: rgba(255, 255, 255, 0.93);
+  opacity: 1;
+  top: 0px;
+  border-bottom: 1px solid gainsboro;
+}
+
+/*edit width to fit text or use custom image*/
+.logo {
+  width: 50px;
+  font-size: 25px;
+  color: #8f8f8f;
+  text-transform: uppercase;
+  float: left;
+  display: block;
+  margin-top: 0;
+  line-height: 1;
+  margin-bottom: 10px;
+}
+@media only screen and (max-width: 766px) {
+  .logo {
+    float: none;
+  }
+}
+
+nav {
+  float: right;
+  width: 60%;
+}
+@media only screen and (max-width: 766px) {
+  nav {
+    width: 100%;
+  }
+}
+nav ul {
+  list-style: none;
+  overflow: hidden;
+  text-align: right;
+  float: right;
+}
+@media only screen and (max-width: 766px) {
+  nav ul {
+    padding-top: 10px;
+    margin-bottom: 22px;
+    float: left;
+    text-align: center;
+    width: 100%;
+  }
+}
+nav ul li {
+  display: inline-block;
+  margin-left: 35px;
+  line-height: 1.5;
+}
+@media only screen and (max-width: 766px) {
+  nav ul li {
+    width: 100%;
+    padding: 7px 0;
+    margin: 0;
+  }
+}
+nav ul a {
+  color: #888888;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+.mobile-toggle {
+  display: none;
+  cursor: pointer;
+  font-size: 20px;
+  position: absolute;
+  right: 22px;
+  top: 0;
+  width: 30px;
+  -webkit-transition: all 200ms ease-in;
+  -moz-transition: all 200ms ease-in;
+  transition: all 200ms ease-in;
+}
+@media only screen and (max-width: 766px) {
+  .mobile-toggle {
+    display: block;
+  }
+}
+.mobile-toggle span {
+  width: 30px;
+  height: 4px;
+  margin-bottom: 6px;
+  border-radius: 1000px;
+  background: #8f8f8f;
+  display: block;
+}
+
+.row {
+  width: 100%;
+  max-width: 940px;
+  margin: 0 auto;
+  position: relative;
+  padding: 0 2%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  color: #8f8f8f;
+  background: white;
+  font-family: "Cardo", serif;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  text-decoration: none;
+  color: #8f8f8f;
+}
+
+h1 {
+  font-size: 30px;
+  line-height: 1.8;
+  text-transform: uppercase;
+  font-family: "Montserrat", sans-serif;
+}
+
+p {
+  margin-bottom: 20px;
+  font-size: 17px;
+  line-height: 2;
+}
+        
+img {
+    width:100%;
+}
+
+.content {
+  padding: 50px 2% 250px;
+}
+
+.hero {
+  position: relative;
+  background: url(http://joshrincon.com/images/mountains.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  text-align: center;
+  color: #fff;
+  padding-top: 110px;
+  min-height: 500px;
+  letter-spacing: 2px;
+  font-family: "Montserrat", sans-serif;
+}
+.hero h1 {
+  font-size: 50px;
+  line-height: 1.3;
+    
+}
+.hero h1 a {
+  font-size: 25px;
+  color: #fff;
+  border-bottom: 2px solid #fff;
+  background-color: #b20000;    
+  padding: 12px;
+  line-height: 3;
+}
+        
+.description {
+  font-size: 18px;
+    color:#fff;
+    border-bottom: 0;
+}
+
+.mouse {
+  display: block;
+  margin: 0 auto;
+  width: 26px;
+  height: 46px;
+  border-radius: 13px;
+  border: 2px solid #fff;
+  position: absolute;
+  bottom: 40px;
+  position: absolute;
+  left: 50%;
+  margin-left: -26px;
+}
+.mouse span {
+  display: block;
+  margin: 6px auto;
+  width: 2px;
+  height: 2px;
+  border-radius: 4px;
+  background: #e8f380;
+  border: 1px solid transparent;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-name: scroll;
+  animation-name: scroll;
+}
+
+@-webkit-keyframes scroll {
+  0% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+
+  100% {
+    opacity: 0;
+    -webkit-transform: translateY(20px);
+    transform: translateY(20px);
+  }
+}
+@keyframes scroll {
+  0% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    transform: translateY(0);
+  }
+
+  100% {
+    opacity: 0;
+    -webkit-transform: translateY(20px);
+    -ms-transform: translateY(20px);
+    transform: translateY(20px);
+  }
+}        
+</style>
+
+    
 
 </head>
 
@@ -52,7 +319,7 @@
 
 <div class="hero sec01">
 
-    <h1><span>friendly loner</span><br>descreption</h1>
+    <h1><a>{Title}</a><br><span class="description">{Description}</span></h1>
 
     <div class="mouse">
         <span></span>
@@ -61,18 +328,190 @@
 </div>
 
 <div class="row content">
-    <h1 class="sec02">About</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum, recusandae, at, labore velit eligendi amet nobis repellat natus sequi sint consectetur excepturi doloribus vero provident consequuntur accusamus quisquam nesciunt cupiditate soluta alias illo et deleniti voluptates facilis repudiandae similique dolore quaerat architecto perspiciatis officiis dolor ullam expedita suscipit neque minima rem praesentium inventore ab officia quos dignissimos esse quam placeat iste porro eius! Minus, aspernatur nesciunt consectetur. Sit, eius, itaque, porro, beatae impedit officia tenetur reiciendis autem vitae a quae ipsam repudiandae odio dolorum quaerat asperiores possimus corporis optio animi quisquam laboriosam nihil quam voluptatum quidem veritatis iste culpa iure modi perspiciatis recusandae ipsa libero officiis aliquam doloremque similique id quasi atque distinctio enim sapiente ratione in quia eum perferendis earum blanditiis. Nobis, architecto, veniam molestias minus iste necessitatibus est ab in earum ratione eveniet soluta molestiae sed illo nostrum nemo debitis. Minus, quod totam aliquam ea asperiores fugit quaerat excepturi dolores ratione numquam consequatur id unde alias provident vero incidunt exercitationem similique consequuntur hic possimus? Fuga, eveniet quaerat inventore corporis laborum eligendi enim soluta obcaecati aliquid veritatis provident amet laudantium est quisquam dolore exercitationem modi? Distinctio, pariatur, ab velit praesentium vitae quidem consequatur deleniti recusandae odit officiis. Quidem, cupiditate.</p>
-    <h1 class="sec03">Section 02</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum, recusandae, at, labore velit eligendi amet nobis repellat natus sequi sint consectetur excepturi doloribus vero provident consequuntur accusamus quisquam nesciunt cupiditate soluta alias illo et deleniti voluptates facilis repudiandae similique dolore quaerat architecto perspiciatis officiis dolor ullam expedita suscipit neque minima rem praesentium inventore ab officia quos dignissimos esse quam placeat iste porro eius! Minus, aspernatur nesciunt consectetur. Sit, eius, itaque, porro, beatae impedit officia tenetur reiciendis autem vitae a quae ipsam repudiandae odio dolorum quaerat asperiores possimus corporis optio animi quisquam laboriosam nihil quam voluptatum quidem veritatis iste culpa iure modi perspiciatis recusandae ipsa libero officiis aliquam doloremque similique id quasi atque distinctio enim sapiente ratione in quia eum perferendis earum blanditiis. Nobis, architecto, veniam molestias minus iste necessitatibus est ab in earum ratione eveniet soluta molestiae sed illo nostrum nemo debitis. Minus, quod totam aliquam ea asperiores fugit quaerat excepturi dolores ratione numquam consequatur id unde alias provident vero incidunt exercitationem similique consequuntur hic possimus? Fuga, eveniet quaerat inventore corporis laborum eligendi enim soluta obcaecati aliquid veritatis provident amet laudantium est quisquam dolore exercitationem modi? Distinctio, pariatur, ab velit praesentium vitae quidem consequatur deleniti recusandae odit officiis. Quidem, cupiditate.</p>
-    <h1 class="sec04">Section 03</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum, recusandae, at, labore velit eligendi amet nobis repellat natus sequi sint consectetur excepturi doloribus vero provident consequuntur accusamus quisquam nesciunt cupiditate soluta alias illo et deleniti voluptates facilis repudiandae similique dolore quaerat architecto perspiciatis officiis dolor ullam expedita suscipit neque minima rem praesentium inventore ab officia quos dignissimos esse quam placeat iste porro eius! Minus, aspernatur nesciunt consectetur. Sit, eius, itaque, porro, beatae impedit officia tenetur reiciendis autem vitae a quae ipsam repudiandae odio dolorum quaerat asperiores possimus corporis optio animi quisquam laboriosam nihil quam voluptatum quidem veritatis iste culpa iure modi perspiciatis recusandae ipsa libero officiis aliquam doloremque similique id quasi atque distinctio enim sapiente ratione in quia eum perferendis earum blanditiis. Nobis, architecto, veniam molestias minus iste necessitatibus est ab in earum ratione eveniet soluta molestiae sed illo nostrum nemo debitis. Minus, quod totam aliquam ea asperiores fugit quaerat excepturi dolores ratione numquam consequatur id unde alias provident vero incidunt exercitationem similique consequuntur hic possimus? Fuga, eveniet quaerat inventore corporis laborum eligendi enim soluta obcaecati aliquid veritatis provident amet laudantium est quisquam dolore exercitationem modi? Distinctio, pariatur, ab velit praesentium vitae quidem consequatur deleniti recusandae odit officiis. Quidem, cupiditate.</p>
-    <h1 class="sec04">Section 04</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum, recusandae, at, labore velit eligendi amet nobis repellat natus sequi sint consectetur excepturi doloribus vero provident consequuntur accusamus quisquam nesciunt cupiditate soluta alias illo et deleniti voluptates facilis repudiandae similique dolore quaerat architecto perspiciatis officiis dolor ullam expedita suscipit neque minima rem praesentium inventore ab officia quos dignissimos esse quam placeat iste porro eius! Minus, aspernatur nesciunt consectetur. Sit, eius, itaque, porro, beatae impedit officia tenetur reiciendis autem vitae a quae ipsam repudiandae odio dolorum quaerat asperiores possimus corporis optio animi quisquam laboriosam nihil quam voluptatum quidem veritatis iste culpa iure modi perspiciatis recusandae ipsa libero officiis aliquam doloremque similique id quasi atque distinctio enim sapiente ratione in quia eum perferendis earum blanditiis. Nobis, architecto, veniam molestias minus iste necessitatibus est ab in earum ratione eveniet soluta molestiae sed illo nostrum nemo debitis. Minus, quod totam aliquam ea asperiores fugit quaerat excepturi dolores ratione numquam consequatur id unde alias provident vero incidunt exercitationem similique consequuntur hic possimus? Fuga, eveniet quaerat inventore corporis laborum eligendi enim soluta obcaecati aliquid veritatis provident amet laudantium est quisquam dolore exercitationem modi? Distinctio, pariatur, ab velit praesentium vitae quidem consequatur deleniti recusandae odit officiis. Quidem, cupiditate.</p>
-</div>
+    {block:Posts}{block:Text}
+    {block:Title}<h1 class="sec02"><a href="{Permalink}">{Title}</a></h1>{/block:Title}
+    <p>{Body}</p>
+    {/block:Text}
+    {block:Photo} 
+    <img src="{PhotoURL-HighRes}" alt="{PhotoAlt}">
+    {block:Caption}<p>{Caption}</p>{/block:Caption}
+    {/block:Photo}
+    {block:Quote}<li class="post quote">"{Quote}"</li>
+    {block:Source}<div class="source">{Source}</div>{/block:Source}
+    {/block:Quote}
+    {/block:Posts}
+    {block:Panorama}
+    {LinkOpenTag}<img src="{PhotoURL-Panorama}">{LinkCloseTag}
+    {block:Caption}<p>{Caption}</p>{/block:Caption}
+    {/block:Panorama}
+    {block:Photoset}
+    {Photoset-HighRes}
+    {block:Caption}<p>{Caption}</p>{/block:Caption}
+    {/block:Photoset}
+    {block:Link}
+    <h1><a href="{URL}" class="link" {Target}>{Name}</a></h1>
+    {block:Description}<p>{Description}</p>{/block:Description}
+    {/block:Link}
+    {block:Chat}
+        <li class="post chat">
+            {block:Title}
+                <h1><a href="{Permalink}">{Title}</a></h1>
+            {/block:Title}
+            <ul class="chat">
+                {block:Lines}
+                <li class="{Alt} user_{UserNumber}">
+                    {block:Label}
+                        <span class="label">{Label}</span>
+                    {/block:Label}{Line}
+                </li>
+                {/block:Lines}
+            </ul>
+        </li>
+    {/block:Chat}
+    {block:Video}
+    {Video-700}
+    {block:Caption}<p>{Caption}</p>{/block:Caption}
+    {/block:Video}
+    {block:Audio}
+    {AudioEmbed}
+    {block:Caption}<p>{Caption}</p>{/block:Caption}
+    {/block:Audio}
 
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script src="js/index.js"></script>
+    <script>
+    
+        // Sticky Header
+        $(window).scroll(function() {
+
+            if ($(window).scrollTop() > 100) {
+                $('.main_h').addClass('sticky');
+            } else {
+                $('.main_h').removeClass('sticky');
+            }
+        });
+
+        // Mobile Navigation
+        $('.mobile-toggle').click(function() {
+            if ($('.main_h').hasClass('open-nav')) {
+                $('.main_h').removeClass('open-nav');
+            } else {
+                $('.main_h').addClass('open-nav');
+            }
+        });
+
+        $('.main_h li a').click(function() {
+            if ($('.main_h').hasClass('open-nav')) {
+                $('.navigation').removeClass('open-nav');
+                $('.main_h').removeClass('open-nav');
+            }
+        });
+
+        // Navigation Scroll - ljepo radi materem
+        $('nav a').click(function(event) {
+            var id = $(this).attr("href");
+            var offset = 70;
+            var target = $(id).offset().top - offset;
+            $('html, body').animate({
+                scrollTop: target
+            }, 500);
+            event.preventDefault();
+        });
+        
+    </script>
+    <script>
+    
+        /*global jQuery */
+        /*jshint browser:true */
+        /*!
+        * FitVids 1.1
+        *
+        * Copyright 2013, Chris Coyier - http://css-tricks.com + Dave Rupert - http://daverupert.com
+        * Credit to Thierry Koblentz - http://www.alistapart.com/articles/creating-intrinsic-ratios-for-video/
+        * Released under the WTFPL license - http://sam.zoy.org/wtfpl/
+        *
+        */
+
+        (function( $ ){
+
+          "use strict";
+
+          $.fn.fitVids = function( options ) {
+            var settings = {
+              customSelector: null,
+              ignore: null,
+            };
+
+            if(!document.getElementById('fit-vids-style')) {
+              // appendStyles: https://github.com/toddmotto/fluidvids/blob/master/dist/fluidvids.js
+              var head = document.head || document.getElementsByTagName('head')[0];
+              var css = '.fluid-width-video-wrapper{width:100%;position:relative;padding:0;}.fluid-width-video-wrapper iframe,.fluid-width-video-wrapper object,.fluid-width-video-wrapper embed {position:absolute;top:0;left:0;width:100%;height:100%;}';
+              var div = document.createElement('div');
+              div.innerHTML = '<p>x</p><style id="fit-vids-style">' + css + '</style>';
+              head.appendChild(div.childNodes[1]);
+            }
+
+            if ( options ) {
+              $.extend( settings, options );
+            }
+
+            return this.each(function(){
+              var selectors = [
+                "iframe[src*='player.vimeo.com']",
+                "iframe[src*='youtube.com']",
+                "iframe[src*='youtube-nocookie.com']",
+                "iframe[src*='kickstarter.com'][src*='video.html']",
+                "object",
+                "embed"
+              ];
+
+              if (settings.customSelector) {
+                selectors.push(settings.customSelector);
+              }
+
+              var ignoreList = '.fitvidsignore';
+
+              if(settings.ignore) {
+                ignoreList = ignoreList + ', ' + settings.ignore;
+              }
+
+              var $allVideos = $(this).find(selectors.join(','));
+              $allVideos = $allVideos.not("object object"); // SwfObj conflict patch
+              $allVideos = $allVideos.not(ignoreList); // Disable FitVids on this video.
+
+              $allVideos.each(function(){
+                var $this = $(this);
+                if($this.parents(ignoreList).length > 0) {
+                  return; // Disable FitVids on this video.
+                }
+                if (this.tagName.toLowerCase() === 'embed' && $this.parent('object').length || $this.parent('.fluid-width-video-wrapper').length) { return; }
+                if ((!$this.css('height') && !$this.css('width')) && (isNaN($this.attr('height')) || isNaN($this.attr('width'))))
+                {
+                  $this.attr('height', 9);
+                  $this.attr('width', 16);
+                }
+                var height = ( this.tagName.toLowerCase() === 'object' || ($this.attr('height') && !isNaN(parseInt($this.attr('height'), 10))) ) ? parseInt($this.attr('height'), 10) : $this.height(),
+                    width = !isNaN(parseInt($this.attr('width'), 10)) ? parseInt($this.attr('width'), 10) : $this.width(),
+                    aspectRatio = height / width;
+                if(!$this.attr('id')){
+                  var videoID = 'fitvid' + Math.floor(Math.random()*999999);
+                  $this.attr('id', videoID);
+                }
+                $this.wrap('<div class="fluid-width-video-wrapper"></div>').parent('.fluid-width-video-wrapper').css('padding-top', (aspectRatio * 100)+"%");
+                $this.removeAttr('height').removeAttr('width');
+              });
+            });
+          };
+        // Works with either jQuery or Zepto
+        })( window.jQuery || window.Zepto );
+        
+    </script>
+    
+    <script>
+    $(document).ready(function(){
+        // Target your .container, .wrapper, .post, etc.
+        $("#thing-with-videos").fitVids();
+      });
+    </script>
 
 </body>
 
