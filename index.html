@@ -186,6 +186,10 @@ img {
     width:100%;
 }
 
+li {
+    list-style-type: none;
+}
+
 .content {
   padding: 50px 2% 250px;
 }
@@ -329,7 +333,7 @@ img {
 
 <div class="row content">
     {block:Posts}{block:Text}
-    {block:Title}<h1 class="sec02"><a href="{Permalink}">{Title}</a></h1>{/block:Title}
+    {block:Title}<h1><a href="{Permalink}">{Title}</a></h1>{/block:Title}
     <p>{Body}</p>
     {/block:Text}
     {block:Photo} 
@@ -338,8 +342,7 @@ img {
     {/block:Photo}
     {block:Quote}<li class="post quote">"{Quote}"</li>
     {block:Source}<div class="source">{Source}</div>{/block:Source}
-    {/block:Quote}
-    {/block:Posts}
+    {/block:Quote}    
     {block:Panorama}
     {LinkOpenTag}<img src="{PhotoURL-Panorama}">{LinkCloseTag}
     {block:Caption}<p>{Caption}</p>{/block:Caption}
@@ -369,13 +372,14 @@ img {
         </li>
     {/block:Chat}
     {block:Video}
-    {Video-700}
+    <div id="thing-with-videos">{Video-700}</div>    
     {block:Caption}<p>{Caption}</p>{/block:Caption}
     {/block:Video}
     {block:Audio}
     {AudioEmbed}
     {block:Caption}<p>{Caption}</p>{/block:Caption}
     {/block:Audio}
+    {/block:Posts}
 
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script>
