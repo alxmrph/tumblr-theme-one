@@ -10,6 +10,8 @@
     <link rel="shortcut icon" href="{Favicon}">
     
     <link rel="alternate" type="application/rss+xml" href="{RSS}">
+    
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,300italic' rel='stylesheet' type='text/css'>
         
     {block:Description}
         <meta name="description" content="{MetaDescription}" />
@@ -35,7 +37,7 @@
   opacity: 0;
   top: -100px;
   padding-bottom: 6px;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Source Sans Pro", sans-serif;
 }
 @media only screen and (max-width: 766px) {
   .main_h {
@@ -76,10 +78,7 @@
   }
 }
 
-nav {
-  float: right;
-  width: 60%;
-}
+
 @media only screen and (max-width: 766px) {
   nav {
     width: 100%;
@@ -118,6 +117,8 @@ nav ul a {
   font-size: 12px;
 }
 
+
+
 .mobile-toggle {
   display: none;
   cursor: pointer;
@@ -149,7 +150,7 @@ nav ul a {
   max-width: 940px;
   margin: 0 auto;
   position: relative;
-  padding: 0 2%;
+  padding: 0;
 }
 
 * {
@@ -158,8 +159,8 @@ nav ul a {
 
 body {
   color: #8f8f8f;
-  background: white;
-  font-family: "Cardo", serif;
+  background: url(http://joshrincon.com/images/halftone.png) fixed repeat;
+  font-family: "Source Sans Pro", sans-serif
   font-weight: 300;
   -webkit-font-smoothing: antialiased;
 }
@@ -170,20 +171,23 @@ a {
 }
 
 h1 {
-  font-size: 30px;
+  font-size: 25px;
+    padding:0;
   line-height: 1.8;
   text-transform: uppercase;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Source Sans Pro", sans-serif;    
 }
 
 p {
   margin-bottom: 20px;
   font-size: 17px;
   line-height: 2;
+    font-family: "Source Sans Pro", sans-serif;
 }
         
 img {
     width:100%;
+    padding-top: 11px;
 }
 
 li {
@@ -191,7 +195,52 @@ li {
 }
 
 .content {
-  padding: 50px 2% 250px;
+  padding: 0;
+    font-family: "Source Sans Pro", sans-serif;
+    background:white;
+}
+        
+.post {    
+    padding: 2% 2%;
+    border-bottom: 2px solid #eee;
+    border-left: 6px solid rgba(238, 238, 238, .5);
+    border-right: 6px solid rgba(238, 238, 238, .5);
+    font-weight: 400;
+}
+        
+.post h1 {    
+    font-weight: 700;
+    clear:both;
+}
+        
+.post h1 a {
+    color: #474747;   
+}
+        
+.date {
+    font-size: 16px;    
+    margin:0;
+    padding: 0;
+    display:block;
+    float:left;
+    border-bottom: 1px solid #eee;
+    font-family: "Source Sans Pro", sans-serif;
+    font-style: italic;
+}
+        
+.quote {
+    text-align: right;   
+}
+        
+.source {    
+    padding:0;
+  line-height: 1.8;
+  text-align: right;
+  font-family: "Source Sans Pro", sans-serif;      
+}
+        
+.videos {    
+    padding-top: 25px;   
 }
 
 .hero {
@@ -205,11 +254,12 @@ li {
   padding-top: 110px;
   min-height: 500px;
   letter-spacing: 2px;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Source Sans Pro", sans-serif;
 }
 .hero h1 {
   font-size: 50px;
   line-height: 1.3;
+    font-weight: 700;
     
 }
 .hero h1 a {
@@ -219,6 +269,7 @@ li {
   background-color: #b20000;    
   padding: 12px;
   line-height: 3;
+    font-weight: 700;
 }
         
 .description {
@@ -285,7 +336,7 @@ li {
     -ms-transform: translateY(20px);
     transform: translateY(20px);
   }
-}        
+}
 </style>
 
     
@@ -293,8 +344,6 @@ li {
 </head>
 
 <body>
-
-  <link href='http://fonts.googleapis.com/css?family=Montserrat|Cardo' rel='stylesheet' type='text/css'>
 
 <header class="main_h">
 
@@ -312,8 +361,8 @@ li {
                 <!--some links need to redirect to page-->
                 <li><a href=".sec01">Home</a></li>
                 <li><a href=".sec02">About</a></li>
-                <li><a href=".sec03">This</a></li>
-                <li><a href=".sec04">That</a></li>
+                {block:HasPages}{block:HasPage}<li><a href="{URL}">{Label}</a></li>{/block:HasPage}{/block:HasPages}
+                {block:AskEnabled}<li><a href="/ask">{AskLabel}</a></li>{/block:AskEnabled}
             </ul>
         </nav>
 
@@ -332,31 +381,50 @@ li {
 </div>
 
 <div class="row content">
-    {block:Posts}{block:Text}
-    {block:Title}<h1><a href="{Permalink}">{Title}</a></h1>{/block:Title}
+    {block:Posts}{block:Text}    
+    <div class="post">{block:Date}<div class="date">{DayOfWeek}, {Month} {DateOfMonth}, {Year} &#8226; {12Hour}:{Minutes} {CapitalAmPm}</div>{/block:Date}{block:Title}<h1><a href="{Permalink}">{Title}</a></h1>{/block:Title}
     <p>{Body}</p>
+    </div>
     {/block:Text}
-    {block:Photo} 
+    {block:Photo}
+    <div class="post">
+        {block:Date}<div class="date">{DayOfWeek}, {Month} {DateOfMonth}, {Year} &#8226; {12Hour}:{Minutes} {CapitalAmPm}</div>{/block:Date}
     <img src="{PhotoURL-HighRes}" alt="{PhotoAlt}">
-    {block:Caption}<p>{Caption}</p>{/block:Caption}
+    {block:Caption}<p class="caption">{Caption}</p>{/block:Caption}
+    </div>
     {/block:Photo}
-    {block:Quote}<li class="post quote">"{Quote}"</li>
-    {block:Source}<div class="source">{Source}</div>{/block:Source}
-    {/block:Quote}    
+    {block:Quote}
+    <div class="post quote">
+        {block:Date}<div class="date">{DayOfWeek}, {Month} {DateOfMonth}, {Year} &#8226; {12Hour}:{Minutes} {CapitalAmPm}</div>{/block:Date}
+    <h1><a href="{Permalink}">"{Quote}"</a></h1>
+    {block:Source}<p class="source">{Source}</p>{/block:Source}
+    </div>
+    {/block:Quote}   
     {block:Panorama}
+    <div class="post">
+        {block:Date}<div class="date">{DayOfWeek}, {Month} {DateOfMonth}, {Year} &#8226; {12Hour}:{Minutes} {CapitalAmPm}</div>{/block:Date}
     {LinkOpenTag}<img src="{PhotoURL-Panorama}">{LinkCloseTag}
-    {block:Caption}<p>{Caption}</p>{/block:Caption}
+    {block:Caption}<p class="caption">{Caption}</p>{/block:Caption}
+    </div>
     {/block:Panorama}
     {block:Photoset}
+    <div class="post">
+        {block:Date}<div class="date">{DayOfWeek}, {Month} {DateOfMonth}, {Year} &#8226; {12Hour}:{Minutes} {CapitalAmPm}</div>{/block:Date}
     {Photoset-HighRes}
-    {block:Caption}<p>{Caption}</p>{/block:Caption}
+    {block:Caption}<p class="caption">{Caption}</p>{/block:Caption}
+    </div>
     {/block:Photoset}
     {block:Link}
+    <div class="post">
+        {block:Date}<div class="date">{DayOfWeek}, {Month} {DateOfMonth}, {Year} &#8226; {12Hour}:{Minutes} {CapitalAmPm}</div>{/block:Date}
     <h1><a href="{URL}" class="link" {Target}>{Name}</a></h1>
     {block:Description}<p>{Description}</p>{/block:Description}
+    </div>
     {/block:Link}
     {block:Chat}
-        <li class="post chat">
+    <div class="post">
+        {block:Date}<div class="date">{DayOfWeek}, {Month} {DateOfMonth}, {Year} &#8226; {12Hour}:{Minutes} {CapitalAmPm}</div>{/block:Date}
+        <li class="chat">
             {block:Title}
                 <h1><a href="{Permalink}">{Title}</a></h1>
             {/block:Title}
@@ -370,14 +438,20 @@ li {
                 {/block:Lines}
             </ul>
         </li>
+    </div>
     {/block:Chat}
     {block:Video}
-    <div id="thing-with-videos">{Video-700}</div>    
+    <div class="post">
+        {block:Date}<div class="date">{DayOfWeek}, {Month} {DateOfMonth}, {Year} &#8226; {12Hour}:{Minutes} {CapitalAmPm}</div>{/block:Date}
+    <div id="thing-with-videos" class="videos">{Video-700}</div>    
     {block:Caption}<p>{Caption}</p>{/block:Caption}
+    </div>
     {/block:Video}
     {block:Audio}
+    <div class="post">
     {AudioEmbed}
     {block:Caption}<p>{Caption}</p>{/block:Caption}
+    </div>
     {/block:Audio}
     {/block:Posts}
 
