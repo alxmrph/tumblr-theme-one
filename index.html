@@ -185,6 +185,14 @@ p {
     font-family: "Source Sans Pro", sans-serif;
 }
         
+ul li {
+   line-height: 2;
+}
+        
+.right-text {
+    text-align: right;
+}
+        
 img {
     width:100%;
     padding-top: 11px;
@@ -201,11 +209,11 @@ li {
 }
         
 .post {    
-    padding: 2% 2%;
-    border-bottom: 2px solid #eee;
+    padding: 2% 2%;       
     border-left: 6px solid rgba(238, 238, 238, .5);
     border-right: 6px solid rgba(238, 238, 238, .5);
     font-weight: 400;
+    line-height: 2;
 }
         
 .post h1 {    
@@ -215,21 +223,28 @@ li {
         
 .post h1 a {
     color: #474747;   
-}
+}    
         
 .date {
-    font-size: 16px;    
-    margin:0;
+    text-align: right;
+    font-size: 16px;        
+    margin: 0;    
     padding: 0;
+    padding-bottom: 7px;
+    padding-right: 35px;
+    padding-left: 300px;
     display:block;
-    float:left;
+    float:right;
     border-bottom: 1px solid #eee;
     font-family: "Source Sans Pro", sans-serif;
     font-style: italic;
 }
         
 .quote {
-    text-align: right;   
+    position:relative;
+    clear: both;
+    text-align: right;
+    padding-right: 70px;
 }
         
 .source {    
@@ -382,49 +397,48 @@ li {
 
 <div class="row content">
     {block:Posts}{block:Text}    
-    <div class="post">{block:Date}<div class="date">{DayOfWeek}, {Month} {DateOfMonth}, {Year} &#8226; {12Hour}:{Minutes} {CapitalAmPm}</div>{/block:Date}{block:Title}<h1><a href="{Permalink}">{Title}</a></h1>{/block:Title}
-    <p>{Body}</p>
+    <div class="post">{block:Title}<h1><a href="{Permalink}">{Title}</a></h1>{/block:Title}
+    <p>{Body}</p>        
     </div>
+    {block:Date}<div class="date">{DayOfWeek}, {Month} {DateOfMonth}, {Year} &#8226; {12Hour}:{Minutes} {CapitalAmPm}</div>{/block:Date}
     {/block:Text}
     {block:Photo}
     <div class="post">
-        {block:Date}<div class="date">{DayOfWeek}, {Month} {DateOfMonth}, {Year} &#8226; {12Hour}:{Minutes} {CapitalAmPm}</div>{/block:Date}
     <img src="{PhotoURL-HighRes}" alt="{PhotoAlt}">
     {block:Caption}<p class="caption">{Caption}</p>{/block:Caption}
-    </div>
+    </div>    
+    {block:Date}<div class="date">{DayOfWeek}, {Month} {DateOfMonth}, {Year} &#8226; {12Hour}:{Minutes} {CapitalAmPm}</div>{/block:Date}
     {/block:Photo}
     {block:Quote}
-    <div class="post quote">
-        {block:Date}<div class="date">{DayOfWeek}, {Month} {DateOfMonth}, {Year} &#8226; {12Hour}:{Minutes} {CapitalAmPm}</div>{/block:Date}
+    <div class="post quote">        
     <h1><a href="{Permalink}">"{Quote}"</a></h1>
-    {block:Source}<p class="source">{Source}</p>{/block:Source}
+    {block:Source}<p class="source">{Source}</p>{/block:Source}    
     </div>
+    {block:Date}<div class="date">{DayOfWeek}, {Month} {DateOfMonth}, {Year} &#8226; {12Hour}:{Minutes} {CapitalAmPm}</div>{/block:Date}
     {/block:Quote}   
     {block:Panorama}
-    <div class="post">
-        {block:Date}<div class="date">{DayOfWeek}, {Month} {DateOfMonth}, {Year} &#8226; {12Hour}:{Minutes} {CapitalAmPm}</div>{/block:Date}
+    <div class="post">        
     {LinkOpenTag}<img src="{PhotoURL-Panorama}">{LinkCloseTag}
-    {block:Caption}<p class="caption">{Caption}</p>{/block:Caption}
+    {block:Caption}<p class="caption">{Caption}</p>{/block:Caption}    
     </div>
+    {block:Date}<div class="date">{DayOfWeek}, {Month} {DateOfMonth}, {Year} &#8226; {12Hour}:{Minutes} {CapitalAmPm}</div>{/block:Date}
     {/block:Panorama}
     {block:Photoset}
-    <div class="post">
-        {block:Date}<div class="date">{DayOfWeek}, {Month} {DateOfMonth}, {Year} &#8226; {12Hour}:{Minutes} {CapitalAmPm}</div>{/block:Date}
+    <div class="post">        
     {Photoset-HighRes}
-    {block:Caption}<p class="caption">{Caption}</p>{/block:Caption}
+    {block:Caption}<p class="caption">{Caption}</p>{/block:Caption}    
     </div>
+    {block:Date}<div class="date">{DayOfWeek}, {Month} {DateOfMonth}, {Year} &#8226; {12Hour}:{Minutes} {CapitalAmPm}</div>{/block:Date}
     {/block:Photoset}
     {block:Link}
-    <div class="post">
-        {block:Date}<div class="date">{DayOfWeek}, {Month} {DateOfMonth}, {Year} &#8226; {12Hour}:{Minutes} {CapitalAmPm}</div>{/block:Date}
+    <div class="post">        
     <h1><a href="{URL}" class="link" {Target}>{Name}</a></h1>
-    {block:Description}<p>{Description}</p>{/block:Description}
+    {block:Description}<p>{Description}</p>{/block:Description}    
     </div>
+    {block:Date}<div class="date">{DayOfWeek}, {Month} {DateOfMonth}, {Year} &#8226; {12Hour}:{Minutes} {CapitalAmPm}</div>{/block:Date}
     {/block:Link}
     {block:Chat}
-    <div class="post">
-        {block:Date}<div class="date">{DayOfWeek}, {Month} {DateOfMonth}, {Year} &#8226; {12Hour}:{Minutes} {CapitalAmPm}</div>{/block:Date}
-        <li class="chat">
+    <div class="post">        
             {block:Title}
                 <h1><a href="{Permalink}">{Title}</a></h1>
             {/block:Title}
@@ -436,22 +450,23 @@ li {
                     {/block:Label}{Line}
                 </li>
                 {/block:Lines}
-            </ul>
-        </li>
+            </ul>            
     </div>
+    {block:Date}<div class="date">{DayOfWeek}, {Month} {DateOfMonth}, {Year} &#8226; {12Hour}:{Minutes} {CapitalAmPm}</div>{/block:Date}
     {/block:Chat}
     {block:Video}
-    <div class="post">
-        {block:Date}<div class="date">{DayOfWeek}, {Month} {DateOfMonth}, {Year} &#8226; {12Hour}:{Minutes} {CapitalAmPm}</div>{/block:Date}
+    <div class="post">        
     <div id="thing-with-videos" class="videos">{Video-700}</div>    
-    {block:Caption}<p>{Caption}</p>{/block:Caption}
+    {block:Caption}<p>{Caption}</p>{/block:Caption}    
     </div>
+    {block:Date}<div class="date">{DayOfWeek}, {Month} {DateOfMonth}, {Year} &#8226; {12Hour}:{Minutes} {CapitalAmPm}</div>{/block:Date}
     {/block:Video}
     {block:Audio}
     <div class="post">
     {AudioEmbed}
-    {block:Caption}<p>{Caption}</p>{/block:Caption}
+    {block:Caption}<p>{Caption}</p>{/block:Caption}    
     </div>
+    {block:Date}<div class="date">{DayOfWeek}, {Month} {DateOfMonth}, {Year} &#8226; {12Hour}:{Minutes} {CapitalAmPm}</div>{/block:Date}
     {/block:Audio}
     {/block:Posts}
 
